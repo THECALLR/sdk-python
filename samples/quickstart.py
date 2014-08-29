@@ -14,7 +14,7 @@ try:
 	# options = {
 	# 	"proxy": "https://foo:bar@example.com:8080"
 	# }
-	# tc = thecallr.Api.new("login", "password", options)
+	# tc = thecallr.Api("login", "password", options)
 
 
 	## Basic example
