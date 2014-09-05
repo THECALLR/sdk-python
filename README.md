@@ -27,7 +27,7 @@ import thecallr
 ```
 
 ## Basic Example (Send SMS)
-See full exemple in [samples/quickstart.py](samples/quickstart.py)
+See full example in [samples/quickstart.py](samples/quickstart.py)
 
 ```python
 # Set your credentials
