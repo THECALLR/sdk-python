@@ -27,9 +27,10 @@ import thecallr
 ```
 
 ## Basic Example (Send SMS)
+See full exemple in [samples/quickstart.py](samples/quickstart.py)
 
 ```python
-# Set your cedentials
+# Set your credentials
 tc = thecallr.Api("login", "password")
 
 # 1. "call" method: each parameter of the method as an argument
@@ -48,7 +49,7 @@ tc.send("sms.send", my_array)
 
 ```python
 try:
-	# Set your cedentials
+	# Set your credentials
 	tc = thecallr.Api("login", "password")
 
 	# This will raise an exception
