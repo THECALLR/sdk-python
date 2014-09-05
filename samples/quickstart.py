@@ -20,7 +20,7 @@ try:
 	## Basic example
 	# Example to send a SMS
 	# 1. "call" method: each parameter of the method as an argument
-	tc.call("sms.send", "THECALLR", "+33123456789", "Hello, world", {
+	result = tc.call("sms.send", "THECALLR", "+33123456789", "Hello, world", {
 		"flash_message": False
 	})
 
@@ -28,7 +28,7 @@ try:
 	my_array = ["THECALLR", "+33123456789", "Hello, world", {
 		"flash_message": False
 	}]
-	tc.send("sms.send", my_array)
+	result = tc.send("sms.send", my_array)
 
 
 	# If you don't pass the correct number of parameter for a method an Exception will raise
