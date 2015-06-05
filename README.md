@@ -80,9 +80,9 @@ result = api.call('sms.send', '', '+33123456789', 'Hello world!', None)
 #### Force GSM encoding
 
 ```python
-optionSMS = { 'force_encoding': 'GSM' };
+optionSMS = { 'force_encoding': 'GSM' }
 
-api.call('sms.send', '', '+33123456789', 'Hello world!', optionSMS);
+result = api.call('sms.send', '', '+33123456789', 'Hello world!', optionSMS)
 ```
 
 *Method*
@@ -106,7 +106,7 @@ result = api.call('sms.send', 'CALLR', '+33123456789', text, None)
 #### Specify your SMS nature (alerting or marketing)
 
 ```python
-optionSMS = { 'nature': 'ALERTING' };
+optionSMS = { 'nature': 'ALERTING' }
 
 result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', optionSMS)
 ```
@@ -120,7 +120,7 @@ result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', optionSMS
 #### Custom data
 
 ```python
-optionSMS = { 'user_data': '42' };
+optionSMS = { 'user_data': '42' }
 
 result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', optionSMS)
 ```
@@ -403,7 +403,7 @@ result = api.call('conference/10.create_room', 'room name', params, access)
 #### Assign a DID to a room
 
 ```python
-result = api.call('conference/10.assign_did', 'Room ID', 'DID ID');
+result = api.call('conference/10.assign_did', 'Room ID', 'DID ID')
 ```
 
 *Method*
