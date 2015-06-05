@@ -16,6 +16,7 @@ Pip
 
 ```python
 import callr
+api = callr.Api("login", "password")
 ```
 
 Source
@@ -24,6 +25,7 @@ Source
 import sys
 sys.path.append("/path/to/callr_folder")
 import callr
+api = callr.Api("login", "password")
 ```
 
 ## Exception Management
