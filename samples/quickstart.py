@@ -1,9 +1,9 @@
-import thecallr
+import callr
 
 try:
-	## initialize instance Thecallr
+	## initialize instance Callr
 	# set your credentials or an Exception will raise
-	tc = thecallr.Api("login", "password")
+	api = callr.Api("login", "password")
 
 	## an optional third parameter let you add options like proxy support
 	# proxy must be in url standard format
@@ -14,30 +14,30 @@ try:
 	# options = {
 	# 	"proxy": "https://foo:bar@example.com:8080"
 	# }
-	# tc = thecallr.Api("login", "password", options)
+	# api = callr.Api("login", "password", options)
 
 
 	## Basic example
 	# Example to send a SMS
 	# 1. "call" method: each parameter of the method as an argument
-	result = tc.call("sms.send", "THECALLR", "+33123456789", "Hello, world", {
+	result = api.call("sms.send", "CALLR", "+33123456789", "Hello, world", {
 		"flash_message": False
 	})
 
 	# 2. "send" method: parameter of the method is an array
-	my_array = ["THECALLR", "+33123456789", "Hello, world", {
+	my_array = ["CALLR", "+33123456789", "Hello, world", {
 		"flash_message": False
 	}]
-	result = tc.send("sms.send", my_array)
+	result = api.send("sms.send", my_array)
 
 
 	# If you don't pass the correct number of parameter for a method an Exception will raise
-	tc.call("sms.send", "THECALLR")
+	# api.call("sms.send", "CALLR")
 
 	# Exception will also raise if there is any HTTP error
 
 # Exceptions handler
-except (thecallr.ThecallrException, thecallr.ThecallrLocalException) as e:
+except (callr.CallrException, callr.CallrLocalException) as e:
 	print "ERROR: %s" % e.code
 	print "MESSAGE: %s" % e.msg
 	print "DATA: ", e.data
