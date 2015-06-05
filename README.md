@@ -499,3 +499,46 @@ result = api.call('cdr.get', 'OUT', from, to, None, None)
 *Objects*
 * [CDR.In](http://thecallr.com/docs/objects/#CDR.In)
 * [CDR.Out](http://thecallr.com/docs/objects/#CDR.Out)
+
+********************************************************************************
+
+### SENDR
+
+#### Broadcast messages to a target (BETA)
+
+```python
+target = {
+    'number': '+33123456789',
+    'timeout': 30
+}
+
+messages = [131, 132, 'TTS|TTS_EN-GB_SERENA|Hello world! how are you ? I hope you enjoy this call. good bye.']
+
+options = {
+    'cdr_field': 'userData',
+    'cli': 'BLOCKED',
+    'loop': 2
+}
+
+result = api.call('sendr/simple.broadcast_1', target, messages, options)
+```
+
+##### Without options
+
+```python
+var target = {
+    'number': '+33123456789',
+    'timeout': 30
+}
+
+messages = [131, 132, 134]
+
+result = api.call('sendr/simple.broadcast_1', target, messages, null)
+```
+
+*Method*
+* [sendr/simple.broadcast_1](http://thecallr.com/docs/api/services/sendr/simple/#sendr/simple.broadcast_1)
+
+*Objects*
+* [Target](http://thecallr.com/docs/objects/#Target)
+* [SENDR.Simple.Broadcast1.Options](http://thecallr.com/docs/objects/#SENDR.Simple.Broadcast1.Options)
