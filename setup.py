@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='callr',
-    version='1.0.0',
+    version='1.0.1',
     author='Michael Jacquin',
     author_email='mj@callr.com',
     packages=['callr'],
@@ -11,5 +11,4 @@ setup(
     license='MIT',
     description='Python SDK for CALLR API',
     long_description="",
-    install_requires=[],
 )

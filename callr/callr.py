@@ -44,7 +44,7 @@ class Api(object):
 	# Send a request to CALLR webservice
 	###
 	def call(self, method, *params):
-		self.send(method, params)
+		return self.send(method, params)
 
 	###
 	# Send a request to CALLR webservice
