@@ -526,14 +526,14 @@ result = api.call('sendr/simple.broadcast_1', target, messages, options)
 ##### Without options
 
 ```python
-var target = {
+target = {
     'number': '+33123456789',
     'timeout': 30
 }
 
 messages = [131, 132, 134]
 
-result = api.call('sendr/simple.broadcast_1', target, messages, null)
+result = api.call('sendr/simple.broadcast_1', target, messages, None)
 ```
 
 *Method*
