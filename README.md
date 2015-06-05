@@ -256,7 +256,7 @@ result = api.call('dialr/call.realtime', 'appHash', target, callOptions)
 ```
 
 *Method*
-* [dialr/call.realtime](http://thecallr.com/docs/api/services/dialr/#call.realtime)
+* [dialr/call.realtime](http://thecallr.com/docs/api/services/dialr/call/#dialr/call.realtime)
 
 *Objects*
 * [Target](http://thecallr.com/docs/objects/#Target)
