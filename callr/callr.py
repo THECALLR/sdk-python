@@ -1,12 +1,12 @@
-from future import standard_library
-standard_library.install_aliases()
-from past.builtins import basestring
-from builtins import object
-import sys
 ###
 # CALLR webservice communication library
 ###
 
+from future import standard_library
+standard_library.install_aliases()
+from past.builtins import basestring
+from builtins import object
+import sys, platform
 import json
 import urllib.request, urllib.error, urllib.parse
 import base64
@@ -27,15 +27,17 @@ def base64encode(bytes_or_str):
         return output_bytes
 
 class Api(object):
+    SDK_VERSION = "2.0.1"
+
+    _api_url = "https://api.thecallr.com/"
     _login = False
     _password = False
     _headers = {
         "Expect": "",
-        "Content-Type": "application/json-rpc; charset=utf-8"
+        "Content-Type": "application/json-rpc; charset=utf-8",
+        "User-Agent": "sdk=PYTHON; sdk-version=%s; lang-version=%s; platform=%s" % (SDK_VERSION, platform.python_version(), platform.system()),
     }
-
-    API_URL = "https://api.thecallr.com/"
-
+    
     ###
     # Initialization
     # @param string login
@@ -59,6 +61,12 @@ class Api(object):
         else:
             raise CallrLocalException("PROXY_NOT_STRING", 1)
 
+    def set_api_url(self, url):
+        if isinstance(url, basestring):
+            self._api_url = url
+        else: 
+            raise CallrLocalException("URL_NOT_STRING", 1)
+
     ###
     # Send a request to CALLR webservice
     ###
@@ -80,7 +88,7 @@ class Api(object):
 
         self._headers["Authorization"] = "Basic %s" % base64encode('%s:%s' % (self._login, self._password)).replace('\n', '')
 
-        req = urllib.request.Request(self.API_URL, json_data, self._headers)
+        req = urllib.request.Request(self._api_url, json_data, self._headers)
         try:
             res = urllib.request.urlopen(req)
             if res.code != 200:
