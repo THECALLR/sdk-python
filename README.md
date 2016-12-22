@@ -51,22 +51,22 @@ except (callr.CallrException, callr.CallrLocalException) as e:
 #### Without options
 
 ```python
-result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', None)
+result = api.call('sms.send', 'SMS', '+33123456789', 'Hello world!', None)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 #### Personalized sender
 
-> Your sender must have been authorized and respect the [sms_sender](http://thecallr.com/docs/formats/#sms_sender) format
+> Your sender must have been authorized and respect the [sms_sender](http://www.callr.com/docs/formats/#sms_sender) format
 
 ```python
 result = api.call('sms.send', 'Your Brand', '+33123456789', 'Hello world!', None)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 #### If you want to receive replies, do not set a sender - we will automatically use a shortcode
 
@@ -75,7 +75,7 @@ result = api.call('sms.send', '', '+33123456789', 'Hello world!', None)
 ```
 
 *Method*
-- [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+- [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 #### Force GSM encoding
 
@@ -86,10 +86,10 @@ result = api.call('sms.send', '', '+33123456789', 'Hello world!', optionSMS)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 *Objects*
-* [SMS.Options](http://thecallr.com/docs/objects/#SMS.Options)
+* [SMS.Options](http://www.callr.com/docs/objects/#SMS.Options)
 
 #### Long SMS (availability depends on carrier)
 
@@ -101,54 +101,52 @@ result = api.call('sms.send', 'CALLR', '+33123456789', text, None)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 #### Specify your SMS nature (alerting or marketing)
 
 ```python
 optionSMS = { 'nature': 'ALERTING' }
 
-result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', optionSMS)
+result = api.call('sms.send', 'SMS', '+33123456789', 'Hello world!', optionSMS)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 *Objects*
-* [SMS.Options](http://thecallr.com/docs/objects/#SMS.Options)
+* [SMS.Options](http://www.callr.com/docs/objects/#SMS.Options)
 
 #### Custom data
 
 ```python
 optionSMS = { 'user_data': '42' }
 
-result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', optionSMS)
+result = api.call('sms.send', 'SMS', '+33123456789', 'Hello world!', optionSMS)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 *Objects*
-* [SMS.Options](http://thecallr.com/docs/objects/#SMS.Options)
+* [SMS.Options](http://www.callr.com/docs/objects/#SMS.Options)
 
 
 #### Delivery Notification - set URL to receive notifications
 
 ```python
 optionSMS = {
-    'push_dlr_enabled': True,
-    'push_dlr_url': 'http://yourdomain.com/push_delivery_path',
-    # 'push_dlr_url_auth': 'login:password' # needed if you use Basic HTTP Authentication
+    'webhook': { 'endpoint': 'http://yourdomain.com/push_delivery_path' }
 }
 
 result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', optionSMS)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 *Objects*
-* [SMS.Options](http://thecallr.com/docs/objects/#SMS.Options)
+* [SMS.Options](http://www.callr.com/docs/objects/#SMS.Options)
 
 
 ### Inbound SMS - set URL to receive inbound messages (MO) and replies
@@ -166,10 +164,10 @@ result = api.call('sms.send', '', '+33123456789', 'Hello world!', optionSMS)
 ```
 
 *Method*
-* [sms.send](http://thecallr.com/docs/api/services/sms/#sms.send)
+* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
 
 *Objects*
-* [SMS.Options](http://thecallr.com/docs/objects/#SMS.Options)
+* [SMS.Options](http://www.callr.com/docs/objects/#SMS.Options)
 
 
 ### Get an SMS
@@ -178,47 +176,10 @@ result = api.call('sms.get', 'SMSHASH')
 ```
 
 *Method*
-* [sms.get](http://thecallr.com/docs/api/services/sms/#sms.get)
+* [sms.get](http://www.callr.com/docs/api/services/sms/#sms.get)
 
 *Objects*
-* [SMS](http://thecallr.com/docs/objects/#SMS)
-
-### SMS Global Settings
-
-#### Get settings
-```python
-result = api.call('sms.get_settings')
-```
-
-*Method*
-* [sms.get_settings](http://thecallr.com/docs/api/services/sms/#sms.get_settings)
-
-*Objects*
-* [SMS.settings](http://thecallr.com/docs/objects/#SMS.Settings)
-
-
-#### Set settings
-
-> Add options that you want to change in the object
-
-```python
-settings = {
-    'push_dlr_enabled': True,
-    'push_dlr_url': 'http://yourdomain.com/push_delivery_path',
-    'push_mo_enabled': True,
-    'push_mo_url': 'http://yourdomain.com/mo_delivery_path'
-}
-
-result = api.call('sms.set_settings', settings)
-```
-
-> Returns the updated settings.
-
-*Method*
-* [sms.set_settings](http://thecallr.com/docs/api/services/sms/#sms.set_settings)
-
-*Objects*
-* [SMS.settings](http://thecallr.com/docs/objects/#SMS.Settings)
+* [SMS](http://www.callr.com/docs/objects/#SMS)
 
 ********************************************************************************
 
