@@ -36,7 +36,7 @@ try:
 	api = callr.Api("login", "password")
 
 	# This will raise an exception
-	api.call("sms.send", "CALLR")
+	api.call("sms.send", "SMS")
 
 # Exceptions handler
 except (callr.CallrException, callr.CallrLocalException) as e:
@@ -97,7 +97,7 @@ result = api.call('sms.send', '', '+33123456789', 'Hello world!', optionSMS)
 text = ('Some super mega ultra long text to test message longer than 160 characters ' +
        'Some super mega ultra long text to test message longer than 160 characters ' +
        'Some super mega ultra long text to test message longer than 160 characters')
-result = api.call('sms.send', 'CALLR', '+33123456789', text, None)
+result = api.call('sms.send', 'SMS', '+33123456789', text, None)
 ```
 
 *Method*
@@ -139,28 +139,7 @@ optionSMS = {
     'webhook': { 'endpoint': 'http://yourdomain.com/push_delivery_path' }
 }
 
-result = api.call('sms.send', 'CALLR', '+33123456789', 'Hello world!', optionSMS)
-```
-
-*Method*
-* [sms.send](http://www.callr.com/docs/api/services/sms/#sms.send)
-
-*Objects*
-* [SMS.Options](http://www.callr.com/docs/objects/#SMS.Options)
-
-
-### Inbound SMS - set URL to receive inbound messages (MO) and replies
-
-> **Do not set a sender if you want to receive replies** - we will automatically use a shortcode.
-
-```python
-optionSMS = {
-    'push_mo_enabled': True,
-    'push_mo_url': 'http://yourdomain.com/mo_delivery_path',
-    # 'push_mo_url_auth': 'login:password' # needed if you use Basic HTTP Authentication
-}
-
-result = api.call('sms.send', '', '+33123456789', 'Hello world!', optionSMS)
+result = api.call('sms.send', 'SMS', '+33123456789', 'Hello world!', optionSMS)
 ```
 
 *Method*
@@ -196,11 +175,11 @@ result = api.call('apps.create', 'REALTIME10', 'Your app name', options)
 ```
 
 *Method*
-* [apps.create](http://thecallr.com/docs/api/services/apps/#apps.create)
+* [apps.create](http://www.callr.com/docs/api/services/apps/#apps.create)
 
 *Objects*
-* [REALTIME10](http://thecallr.com/docs/objects/#REALTIME10)
-* [App](http://thecallr.com/docs/objects/#App)
+* [REALTIME10](http://www.callr.com/docs/objects/#REALTIME10)
+* [App](http://www.callr.com/docs/objects/#App)
 
 #### Start a REALTIME outbound call
 
@@ -219,11 +198,11 @@ result = api.call('dialr/call.realtime', 'appHash', target, callOptions)
 ```
 
 *Method*
-* [dialr/call.realtime](http://thecallr.com/docs/api/services/dialr/call/#dialr/call.realtime)
+* [dialr/call.realtime](http://www.callr.com/docs/api/services/dialr/call/#dialr/call.realtime)
 
 *Objects*
-* [Target](http://thecallr.com/docs/objects/#Target)
-* [REALTIME10.Call.Options](http://thecallr.com/docs/objects/#REALTIME10.Call.Options)
+* [Target](http://www.callr.com/docs/objects/#Target)
+* [REALTIME10.Call.Options](http://www.callr.com/docs/objects/#REALTIME10.Call.Options)
 
 #### Inbound Calls - Assign a phone number to a REALTIME app
 
@@ -232,11 +211,11 @@ result = api.call('apps.assign_did', 'appHash', 'DID ID')
 ```
 
 *Method*
-* [apps.assign_did](http://thecallr.com/docs/api/services/apps/#apps.assign_did)
+* [apps.assign_did](http://www.callr.com/docs/api/services/apps/#apps.assign_did)
 
 *Objects*
-* [App](http://thecallr.com/docs/objects/#App)
-* [DID](http://thecallr.com/docs/objects/#DID)
+* [App](http://www.callr.com/docs/objects/#App)
+* [DID](http://www.callr.com/docs/objects/#DID)
 
 ********************************************************************************
 
@@ -248,10 +227,10 @@ result = api.call('did/areacode.countries')
 ```
 
 *Method*
-* [did/areacode.countries](http://thecallr.com/docs/api/services/did/areacode/#did/areacode.countries)
+* [did/areacode.countries](http://www.callr.com/docs/api/services/did/areacode/#did/areacode.countries)
 
 *Objects*
-* [DID.Country](http://thecallr.com/docs/objects/#DID.Country)
+* [DID.Country](http://www.callr.com/docs/objects/#DID.Country)
 
 #### Get area codes available for a specific country and DID type
 
@@ -260,10 +239,10 @@ result = api.call('did/areacode.get_list', 'US', None)
 ```
 
 *Method*
-* [did/areacode.get_list](http://thecallr.com/docs/api/services/did/areacode/#did/areacode.get_list)
+* [did/areacode.get_list](http://www.callr.com/docs/api/services/did/areacode/#did/areacode.get_list)
 
 *Objects*
-* [DID.AreaCode](http://thecallr.com/docs/objects/#DID.AreaCode)
+* [DID.AreaCode](http://www.callr.com/docs/objects/#DID.AreaCode)
 
 #### Get DID types available for a specific country
 ```python
@@ -271,10 +250,10 @@ result = api.call('did/areacode.types', 'US')
 ```
 
 *Method*
-* [did/areacode.types](http://thecallr.com/docs/api/services/did/areacode/#did/areacode.types)
+* [did/areacode.types](http://www.callr.com/docs/api/services/did/areacode/#did/areacode.types)
 
 *Objects*
-* [DID.Type](http://thecallr.com/docs/objects/#DID.Type)
+* [DID.Type](http://www.callr.com/docs/objects/#DID.Type)
 
 #### Buy a DID (after a reserve)
 
@@ -283,10 +262,10 @@ result = api.call('did/store.buy_order', 'OrderToken')
 ```
 
 *Method*
-* [did/store.buy_order](http://thecallr.com/docs/api/services/did/store/#did/store.buy_order)
+* [did/store.buy_order](http://www.callr.com/docs/api/services/did/store/#did/store.buy_order)
 
 *Objects*
-* [DID.Store.BuyStatus](http://thecallr.com/docs/objects/#DID.Store.BuyStatus)
+* [DID.Store.BuyStatus](http://www.callr.com/docs/objects/#DID.Store.BuyStatus)
 
 #### Cancel your order (after a reserve)
 
@@ -295,7 +274,7 @@ result = api.call('did/store.cancel_order', 'OrderToken')
 ```
 
 *Method*
-* [did/store.cancel_order](http://thecallr.com/docs/api/services/did/store/#did/store.cancel_order)
+* [did/store.cancel_order](http://www.callr.com/docs/api/services/did/store/#did/store.cancel_order)
 
 #### Cancel a DID subscription
 
@@ -304,7 +283,7 @@ result = api.call('did/store.cancel_subscription', 'DID ID')
 ```
 
 *Method*
-* [did/store.cancel_subscription](http://thecallr.com/docs/api/services/did/store/#did/store.cancel_subscription)
+* [did/store.cancel_subscription](http://www.callr.com/docs/api/services/did/store/#did/store.cancel_subscription)
 
 #### View your store quota status
 
@@ -313,10 +292,10 @@ result = api.call('did/store.get_quota_status')
 ```
 
 *Method*
-* [did/store.get_quota_status](http://thecallr.com/docs/api/services/did/store/#did/store.get_quota_status)
+* [did/store.get_quota_status](http://www.callr.com/docs/api/services/did/store/#did/store.get_quota_status)
 
 *Objects*
-* [DID.Store.QuotaStatus](http://thecallr.com/docs/objects/#DID.Store.QuotaStatus)
+* [DID.Store.QuotaStatus](http://www.callr.com/docs/objects/#DID.Store.QuotaStatus)
 
 #### Get a quote without reserving a DID
 
@@ -325,10 +304,10 @@ result = api.call('did/store.get_quote', 0, 'GOLD', 1)
 ```
 
 *Method*
-* [did/store.get_quote](http://thecallr.com/docs/api/services/did/store/#did/store.get_quote)
+* [did/store.get_quote](http://www.callr.com/docs/api/services/did/store/#did/store.get_quote)
 
 *Objects/
-* [DID.Store.Quote](http://thecallr.com/docs/objects/#DID.Store.Quote)
+* [DID.Store.Quote](http://www.callr.com/docs/objects/#DID.Store.Quote)
 
 #### Reserve a DID
 
@@ -337,10 +316,10 @@ result = api.call('did/store.reserve', 0, 'GOLD', 1, 'RANDOM')
 ```
 
 *Method*
-* [did/store.reserve](http://thecallr.com/docs/api/services/did/store/#did/store.reserve)
+* [did/store.reserve](http://www.callr.com/docs/api/services/did/store/#did/store.reserve)
 
 *Objects*
-* [DID.Store.Reservation](http://thecallr.com/docs/objects/#DID.Store.Reservation)
+* [DID.Store.Reservation](http://www.callr.com/docs/objects/#DID.Store.Reservation)
 
 #### View your order
 
@@ -349,10 +328,10 @@ result = api.call('did/store.view_order', 'OrderToken')
 ```
 
 *Method*
-* [did/store.buy_order](http://thecallr.com/docs/api/services/did/store/#did/store.view_order)
+* [did/store.buy_order](http://www.callr.com/docs/api/services/did/store/#did/store.view_order)
 
 *Objects*
-* [DID.Store.Reservation](http://thecallr.com/docs/objects/#DID.Store.Reservation)
+* [DID.Store.Reservation](http://www.callr.com/docs/objects/#DID.Store.Reservation)
 
 ********************************************************************************
 
@@ -368,11 +347,11 @@ result = api.call('conference/10.create_room', 'room name', params, access)
 ```
 
 *Method*
-* [conference/10.create_room](http://thecallr.com/docs/api/services/conference/10/#conference/10.create_room)
+* [conference/10.create_room](http://www.callr.com/docs/api/services/conference/10/#conference/10.create_room)
 
 *Objects*
-* [CONFERENCE10](http://thecallr.com/docs/objects/#CONFERENCE10)
-* [CONFERENCE10.Room.Access](http://thecallr.com/docs/objects/#CONFERENCE10.Room.Access)
+* [CONFERENCE10](http://www.callr.com/docs/objects/#CONFERENCE10)
+* [CONFERENCE10.Room.Access](http://www.callr.com/docs/objects/#CONFERENCE10.Room.Access)
 
 #### Assign a DID to a room
 
@@ -381,7 +360,7 @@ result = api.call('conference/10.assign_did', 'Room ID', 'DID ID')
 ```
 
 *Method*
-* [conference/10.assign_did](http://thecallr.com/docs/api/services/conference/10/#conference/10.assign_did)
+* [conference/10.assign_did](http://www.callr.com/docs/api/services/conference/10/#conference/10.assign_did)
 
 #### Create a PIN protected conference room
 
@@ -396,11 +375,11 @@ result = api.call('conference/10.create_room', 'room name', params, access)
 ```
 
 *Method*
-* [conference/10.create_room](http://thecallr.com/docs/api/services/conference/10/#conference/10.create_room)
+* [conference/10.create_room](http://www.callr.com/docs/api/services/conference/10/#conference/10.create_room)
 
 *Objects*
-* [CONFERENCE10](http://thecallr.com/docs/objects/#CONFERENCE10)
-* [CONFERENCE10.Room.Access](http://thecallr.com/docs/objects/#CONFERENCE10.Room.Access)
+* [CONFERENCE10](http://www.callr.com/docs/objects/#CONFERENCE10)
+* [CONFERENCE10.Room.Access](http://www.callr.com/docs/objects/#CONFERENCE10.Room.Access)
 
 #### Call a room access
 
@@ -409,7 +388,7 @@ result = api.call('conference/10.call_room_access', 'Room Access ID', 'BLOCKED',
 ```
 
 *Method*
-* [conference/10.call_room_access](http://thecallr.com/docs/api/services/conference/10/#conference/10.call_room_access)
+* [conference/10.call_room_access](http://www.callr.com/docs/api/services/conference/10/#conference/10.call_room_access)
 
 ********************************************************************************
 
@@ -422,7 +401,7 @@ result = api.call('media/library.get_list', None)
 ```
 
 *Method*
-* [media/library.get_list](http://thecallr.com/docs/api/services/media/library/#media/library.get_list)
+* [media/library.get_list](http://www.callr.com/docs/api/services/media/library/#media/library.get_list)
 
 #### Create an empty media
 
@@ -431,7 +410,7 @@ result = api.call('media/library.create', 'name')
 ```
 
 *Method*
-* [media/library.create](http://thecallr.com/docs/api/services/media/library/#media/library.create)
+* [media/library.create](http://www.callr.com/docs/api/services/media/library/#media/library.create)
 
 #### Upload a media
 
@@ -442,7 +421,7 @@ result = api.call('media/library.set_content', media_id, 'text', 'base64_audio_d
 ```
 
 *Method*
-* [media/library.set_content](http://thecallr.com/docs/api/services/media/library/#media/library.set_content)
+* [media/library.set_content](http://www.callr.com/docs/api/services/media/library/#media/library.set_content)
 
 #### Use Text-to-Speech
 
@@ -453,7 +432,7 @@ result = api.call('media/tts.set_content', media_id, 'Hello world!', 'TTS-EN-GB_
 ```
 
 *Method*
-* [media/tts.set_content](http://thecallr.com/docs/api/services/media/tts/#media/tts.set_content)
+* [media/tts.set_content](http://www.callr.com/docs/api/services/media/tts/#media/tts.set_content)
 
 ********************************************************************************
 
@@ -468,11 +447,11 @@ result = api.call('cdr.get', 'OUT', from, to, None, None)
 ```
 
 *Method*
-* [cdr.get](http://thecallr.com/docs/api/services/cdr/#cdr.get)
+* [cdr.get](http://www.callr.com/docs/api/services/cdr/#cdr.get)
 
 *Objects*
-* [CDR.In](http://thecallr.com/docs/objects/#CDR.In)
-* [CDR.Out](http://thecallr.com/docs/objects/#CDR.Out)
+* [CDR.In](http://www.callr.com/docs/objects/#CDR.In)
+* [CDR.Out](http://www.callr.com/docs/objects/#CDR.Out)
 
 ********************************************************************************
 
@@ -511,8 +490,8 @@ result = api.call('sendr/simple.broadcast_1', target, messages, None)
 ```
 
 *Method*
-* [sendr/simple.broadcast_1](http://thecallr.com/docs/api/services/sendr/simple/#sendr/simple.broadcast_1)
+* [sendr/simple.broadcast_1](http://www.callr.com/docs/api/services/sendr/simple/#sendr/simple.broadcast_1)
 
 *Objects*
-* [Target](http://thecallr.com/docs/objects/#Target)
-* [SENDR.Simple.Broadcast1.Options](http://thecallr.com/docs/objects/#SENDR.Simple.Broadcast1.Options)
+* [Target](http://www.callr.com/docs/objects/#Target)
+* [SENDR.Simple.Broadcast1.Options](http://www.callr.com/docs/objects/#SENDR.Simple.Broadcast1.Options)
