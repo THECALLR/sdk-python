@@ -136,7 +136,7 @@ result = api.call('sms.send', 'SMS', '+33123456789', 'Hello world!', optionSMS)
 
 ```python
 optionSMS = {
-    'webhook': { 'endpoint': 'http://yourdomain.com/push_delivery_path' }
+    'webhook': { 'endpoint': 'http://yourdomain.com/webhook_endpoint' }
 }
 
 result = api.call('sms.send', 'SMS', '+33123456789', 'Hello world!', optionSMS)
@@ -147,7 +147,7 @@ result = api.call('sms.send', 'SMS', '+33123456789', 'Hello world!', optionSMS)
 
 *Objects*
 * [SMS.Options](http://www.callr.com/docs/objects/#SMS.Options)
-
+* [Webhook](https://www.callr.com/docs/objects/#Webhook)
 
 ### Get an SMS
 ```python
