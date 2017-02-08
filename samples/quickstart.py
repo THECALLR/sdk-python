@@ -20,19 +20,19 @@ try:
 	## Basic example
 	# Example to send a SMS
 	# 1. "call" method: each parameter of the method as an argument
-	result = api.call("sms.send", "CALLR", "+33123456789", "Hello, world", {
+	result = api.call("sms.send", "SMS", "+33123456789", "Hello, world", {
 		"flash_message": False
 	})
 
 	# 2. "send" method: parameter of the method is an array
-	my_array = ["CALLR", "+33123456789", "Hello, world", {
+	my_array = ["SMS", "+33123456789", "Hello, world", {
 		"flash_message": False
 	}]
 	result = api.send("sms.send", my_array)
 
 
 	# If you don't pass the correct number of parameter for a method an Exception will raise
-	# api.call("sms.send", "CALLR")
+	# api.call("sms.send", "SMS")
 
 	# Exception will also raise if there is any HTTP error
 
