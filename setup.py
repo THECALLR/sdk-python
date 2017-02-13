@@ -10,11 +10,17 @@ setup(
     scripts=[],
     url='https://github.com/THECALLR/sdk-python',
     license='MIT',
-    classifiers=[
+    install_requires=[
+        'future>=0.15.2'
+    ],
+     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3'
-    ],
-    description='Python>=2.7, SDK for CALLR API',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+     ],
+    description='Python 2.7, 3.3+ SDK for CALLR API'
 )
