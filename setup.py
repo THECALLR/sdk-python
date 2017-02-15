@@ -3,7 +3,7 @@ import sys
 
 setup(
     name='callr',
-    version='2.0.1',
+    version='2.1.0',
     author='Michael Jacquin, Dion MITCHELL',
     author_email='michael.jacquin@callr.com, dion.mitchell@callr.com',
     packages=['callr'],

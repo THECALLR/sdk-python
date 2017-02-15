@@ -27,9 +27,9 @@ def base64encode(bytes_or_str):
         return output_bytes
 
 class Api(object):
-    SDK_VERSION = "2.0.1"
+    SDK_VERSION = "2.1"
 
-    _api_url = "https://api.thecallr.com/"
+    _api_url = "https://api.callr.com/json-rpc/v1.1/"
     _login = False
     _password = False
     _headers = {
