@@ -32,20 +32,26 @@ api = callr.Api("login", "password")
 
 ```python
 try:
-	# Set your credentials
-	api = callr.Api("login", "password")
+    # Set your credentials
+    api = callr.Api("login", "password")
 
-	# This will raise an exception
-	api.call("sms.send", "SMS")
+    # This will raise an exception
+    api.call("sms.send", "SMS")
 
 # Exceptions handler
 except (callr.CallrException, callr.CallrLocalException) as e:
-	print "ERROR: %s" % e.code
-	print "MESSAGE: %s" % e.msg
-	print "DATA: ", e.data
+    print "ERROR: %s" % e.code
+    print "MESSAGE: %s" % e.msg
+    print "DATA: ", e.data
 ```
 
 ## Usage
+### Login-As
+```python
+api.set_login_as('user', 'foo') # login as user foo
+api.set_login_as('account', 'foo') # login as account foo
+```
+
 ### Sending SMS
 
 #### Without options
