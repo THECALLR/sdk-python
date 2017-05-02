@@ -32,12 +32,13 @@ class Api(object):
     _api_url = "https://api.callr.com/json-rpc/v1.1/"
     _login = False
     _password = False
+    _login_as = None
     _headers = {
         "Expect": "",
         "Content-Type": "application/json-rpc; charset=utf-8",
         "User-Agent": "sdk=PYTHON; sdk-version=%s; lang-version=%s; platform=%s" % (SDK_VERSION, platform.python_version(), platform.system()),
     }
-    
+
     ###
     # Initialization
     # @param string login
@@ -53,6 +54,17 @@ class Api(object):
             if "proxy" in options:
                 self.set_proxy(options["proxy"])
 
+    def set_login_as(as_type, as_target):
+        if as_type.lower() not in ['user', 'account']:
+            raise CallrLocalException("INVALID_LOGIN_AS_TYPE", 2)
+
+        types = {
+            'user': 'User.login',
+            'account': 'Account.hash'
+        }
+
+        self._login_as = "{0} {1!s}".format(types[as_type.lower()], as_target)
+
     def set_proxy(self, proxy):
         if isinstance(proxy, basestring):
             proxy_handler = urllib.request.ProxyHandler({'https': proxy})
@@ -64,7 +76,7 @@ class Api(object):
     def set_api_url(self, url):
         if isinstance(url, basestring):
             self._api_url = url
-        else: 
+        else:
             raise CallrLocalException("URL_NOT_STRING", 1)
 
     ###
@@ -86,9 +98,16 @@ class Api(object):
             "params": params
         }).encode('utf8')
 
-        self._headers["Authorization"] = "Basic %s" % base64encode('%s:%s' % (self._login, self._password)).replace('\n', '')
+        auth = "{}:{}".format(self._login, self._password)
+        auth = base64encode(auth).replace("\n", "")
 
-        req = urllib.request.Request(self._api_url, json_data, self._headers)
+        headers = dict(self._headers)
+        headers["Authorization"] = "Basic {}".format(auth)
+
+        if self._login is not None:
+            headers["CALLR-Login-As"] = self._login_as
+
+        req = urllib.request.Request(self._api_url, json_data, headers)
         try:
             res = urllib.request.urlopen(req)
             if res.code != 200:
@@ -111,8 +130,8 @@ class Api(object):
         try:
             if isinstance(body, str):
                 data = json.loads(body)
-            else: 
-                data = json.loads(str(body, 'utf-8'))				
+            else:
+                data = json.loads(str(body, 'utf-8'))
 
             if data and "result" in data:
                 return data["result"]
