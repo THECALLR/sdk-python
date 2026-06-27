@@ -27,6 +27,14 @@ def base64encode(bytes_or_str):
         return output_bytes
 
 class Api(object):
+    """Client for the legacy Callr JSON-RPC API (v1).
+
+    .. deprecated::
+        This SDK targets the legacy Callr JSON-RPC API (v1), which will be shut
+        down on 2027-06-30. Migrate to the Callr REST API v2:
+        https://docs.callr.com/reference/migrating-from-json-rpc-v1
+    """
+
     SDK_VERSION = "2.1"
 
     _api_url = "https://api.callr.com/json-rpc/v1.1/"
